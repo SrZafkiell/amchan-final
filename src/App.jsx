@@ -15,8 +15,8 @@ function App() {
 
   return (
     <>
+      <NavBar />
       <StoreProvider>
-        <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/About" element={<About />} />
@@ -27,8 +27,8 @@ function App() {
           {/* <Route path="/" element={< />} /> */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <Footer />
       </StoreProvider>
+      <Footer />
     </>
   )
 }

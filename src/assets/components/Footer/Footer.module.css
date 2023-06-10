@@ -1,0 +1,10 @@
+.footerMainContainer {
+    bottom: 0px;
+    padding: 10px;
+    position: relative;
+    background-color: #3366cc;
+    color: #f1f1f1;
+    align-content: center;
+    text-align: center;
+    margin-top: 50px;
+}
