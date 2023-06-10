@@ -1,0 +1,15 @@
+.importantInfoContent {
+    border-left: #000b76 solid 4px;
+    padding-left: 10px;
+}
+
+.importantInfoSection {
+    color: rgb(1, 111, 175);
+    background: url('/images/InfoSections/left-wave.svg'), url('/images/InfoSections/right-wave.svg');
+    background-color: #e6effd;;  
+    background-position: left, right;
+    background-repeat: repeat-y, repeat-y;
+    /* Top Right Down Left */
+    padding: 50px 150px 50px 150px;
+    margin: 20px 0px 20px 0px;
+}

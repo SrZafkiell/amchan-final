@@ -1,0 +1,17 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-image: url('/images/background/general/wave-top.svg'), url('/images/background/general/wave-bottom.svg');
+  background-color: #FFFFFF;
+  background-position: top, bottom;
+  background-repeat: no-repeat, no-repeat;
+}
+
+html {
+  scroll-behavior: smooth;
+}

@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Della+Respira&family=Raleway&family=Source+Sans+Pro&family=Ubuntu&display=swap');
+
+.titleFont {
+    font-family: 'Ubuntu', sans-serif;
+    margin-bottom: 20px;
+}
+
+.subTitleFont {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.textFont {
+    font-family: 'Raleway', sans-serif;
+    margin-bottom: 10px;
+}
+
+.linkFont {
+    font-family: 'Della Respira', serif;
+    text-decoration: none;
+    color: rgb(2, 82, 128);
+}
+
+.linkFont:hover {
+    color: rgb(1, 111, 175);
+}

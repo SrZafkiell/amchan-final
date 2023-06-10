@@ -1,0 +1,13 @@
+Background: #FFFFFF
+Font: #F4F5F7
+Info Sections: #F4F5F7
+Important Section: #E6EFFD
+Top Nav - Upper: #3366CC
+Top Nav - Down: #284D96
+Footer: #3366CC
+Button Hover: #3266CC
+
+Modal background: #404AB5
+Modal Background V2: #ddedff rgba(221,237,255,255)
+
+Content Box Border: #E2E8F0

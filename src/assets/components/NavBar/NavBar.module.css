@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Della+Respira&family=Raleway&family=Source+Sans+Pro&family=Ubuntu&display=swap');
+
+
+.navBar {
+    background-color: #3366CC;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: center;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.navCenter {
+    display: flex;
+}
+
+.navAccountButton {
+    background-color: #f1f1f1;
+    /* border: 2px solid #3366CC; */
+    color: #3366CC;
+    border-radius: 25px;
+    padding: 10px 40px 10px 40px;
+    margin: 0px 5px 0px 5px;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.navAccountButton:hover {
+    background-color: #3366CC; 
+    border: 1px solid #f1f1f1;
+    color: #f1f1f1;
+}
+
+.navMainButton {
+    /* 40px Top-Bottom Size */
+    /* Top Right Bottom Left */
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px 10px 20px;
+    margin: 0px 5px 0px 0px;
+    background-color: #3366CC;
+    /* border: 1px solid #f1f1f1; */
+    border-bottom: solid #f1f1f1;
+    color: #f1f1f1;
+    position: relative;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.navMainButton:hover {
+    background-color: #f1f1f1;
+    border: 1px solid #3366CC;
+    color: #3366CC;
+    border-radius: 5px;
+    padding: 14px 24px 14px 24px;
+    -webkit-transform: translateY(-5px);
+	transform: translateY(-5px);
+}
+
+.navIcon {
+    height: 16px;
+    position: relative;
+    margin-right: 5px;
+}
+
+.logo img{
+    height: 64px;
+    margin: 15px;
+}
