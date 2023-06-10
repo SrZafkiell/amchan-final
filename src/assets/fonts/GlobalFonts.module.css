@@ -7,11 +7,11 @@
 
 .subTitleFont {
     font-family: 'Source Sans Pro', sans-serif;
+    margin-top: 15px;
 }
 
 .textFont {
     font-family: 'Raleway', sans-serif;
-    margin-bottom: 10px;
 }
 
 .linkFont {

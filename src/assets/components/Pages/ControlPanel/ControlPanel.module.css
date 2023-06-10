@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Della+Respira&family=Raleway&family=Source+Sans+Pro&family=Ubuntu&display=swap');
+
 .controlPanelMain {
     min-height: 100vh;
     display: grid;
     grid-template-columns: 0.2fr 1fr;
-    padding-top: 30px;
+    margin: 30px;
 }
 
 .controlPanelMenu {
@@ -13,17 +15,50 @@
     align-content: center;
 }
 
-.controlPanelMenu button{
+.controlPanelSubButton {
     width: 150px;
     height: 45px;
-    margin: 10px 0px;
+    margin: 5px 0px;
+    background-color: #f1f1f1;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 3px solid #3366CC;
+    color: #3366CC;
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+    transition: 0.5s;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.controlPanelSubButton:hover {
+    background-color: #3366CC;
+    /* border: 1px solid #f1f1f1; */
+    border-bottom: 3px solid #f1f1f1;
+    color: #f1f1f1;
+}
+
+.controlPanelSubButton:active {
+    background-color: #f1f1f1;
+    border-bottom: 3px solid #3366CC;
+    color: #3366CC;
+    -webkit-transform: translateY(4px);
+	transform: translateY(4px);
+    transition: 0s;
 }
 
 .controlPanelContent {
     display: flex;
-    justify-content: center;
-    align-content: flex-start;
+    justify-content: flex-start;
     flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 35px;
+    /* justify-content: center;
+    align-content: flex-start;
+    flex-wrap: wrap; */
 }
 
 .loaderWrapper {
@@ -32,3 +67,8 @@
     align-items: center;
 }
   
+
+/* 
+Blue: #3366cc
+White: #f1f1f1
+*/
