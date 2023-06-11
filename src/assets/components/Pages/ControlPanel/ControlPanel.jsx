@@ -2,46 +2,94 @@ import React, { useContext, useState, useEffect } from "react";
 import { StoreContext } from "../../../context/StoreContext";
 import { Loader } from "../../Loader/Loader";
 
+import fonts from '/src/assets/fonts/GlobalFonts.module.css'
 import styles from "./ControlPanel.module.css";
 import DefaultContent from "./Elements/DefaultContent/DefaultContent";
+import TotalProducts from "./Elements/Analytics/TotalProducts/TotalProducts";
+import TotalOrders from "./Elements/Analytics/TotalOrders/TotalOrders";
+import TotalEarnings from "./Elements/Analytics/TotalEarnings/TotalEarnings";
+import AveragePrice from "./Elements/Analytics/AveragePrice/AveragePrice";
+import MostSelled from "./Elements/Analytics/MostSelled/MostSelled";
 
 export const ControlPanel = () => {
   const { allCarts, loadingCarts, allProducts, loadingProducts } = useContext(StoreContext);
+  const [loadingFinished, setLoadingFinished] = useState(false);
   const [showControlPanelDefault, setShowControlPanelDefault] = useState(true);
+  const [showTotalProducts, setShowTotalProducts] = useState(false);
+  const [showTotalOrders, setShowTotalOrders] = useState(false);
+  const [showTotalEarnings, setShowTotalEarnings] = useState(false);
+  const [showAveragePrice, setShowAveragePrice] = useState(false);
+  const [showMostSelled, setShowMostSelled] = useState(false);
   const [showAccountManagement, setShowAccountManagement] = useState(false);
   const [showProductManagement, setShowProductManagement] = useState(false);
-  const [showCarts, setShowCarts] = useState(false);
-  const [showTest, setShowTest] = useState(false);
-  const [loadingFinished, setLoadingFinished] = useState(false);
 
-  const handleShowCarts = () => {
-    setShowCarts(true);
+  const handleShowTotalProducts = () => {
     setShowControlPanelDefault(false);
-    setShowTest(false);
+    setShowTotalProducts(true);
+    setShowTotalOrders(false);
+    setShowTotalEarnings(false);
+    setShowAveragePrice(false);
+    setShowMostSelled(false);
     setShowAccountManagement(false);
     setShowProductManagement(false);
-  };
-
-  const handleShowTest = () => {
-    setShowTest(true);
+  }
+  const handleShowTotalOrders = () => {
     setShowControlPanelDefault(false);
-    setShowCarts(false);
+    setShowTotalProducts(false);
+    setShowTotalOrders(true);
+    setShowTotalEarnings(false);
+    setShowAveragePrice(false);
+    setShowMostSelled(false);
     setShowAccountManagement(false);
     setShowProductManagement(false);
-  };
-
+  }
+  const handleShowTotalEarnings = () => {
+    setShowControlPanelDefault(false);
+    setShowTotalProducts(false);
+    setShowTotalOrders(false);
+    setShowTotalEarnings(true);
+    setShowAveragePrice(false);
+    setShowMostSelled(false);
+    setShowAccountManagement(false);
+    setShowProductManagement(false);
+  }
+  const handleShowAveragePrice = () => {
+    setShowControlPanelDefault(false);
+    setShowTotalProducts(false);
+    setShowTotalOrders(false);
+    setShowTotalEarnings(false);
+    setShowAveragePrice(true);
+    setShowMostSelled(false);
+    setShowAccountManagement(false);
+    setShowProductManagement(false);
+  }
+  const handleShowMostSelled = () => {
+    setShowControlPanelDefault(false);
+    setShowTotalProducts(false);
+    setShowTotalOrders(false);
+    setShowTotalEarnings(false);
+    setShowAveragePrice(false);
+    setShowMostSelled(true);
+    setShowAccountManagement(false);
+    setShowProductManagement(false);
+  }
   const handleShowAccountManagement = () => {
-    setShowTest(false);
     setShowControlPanelDefault(false);
-    setShowCarts(false);
+    setShowTotalProducts(false);
+    setShowTotalOrders(false);
+    setShowTotalEarnings(false);
+    setShowAveragePrice(false);
+    setShowMostSelled(false);
     setShowAccountManagement(true);
     setShowProductManagement(false);
   }
-
-  const handleShowProductsManagement = () => {
-    setShowTest(false);
+  const handleShowProductManagement = () => {
     setShowControlPanelDefault(false);
-    setShowCarts(false);
+    setShowTotalProducts(false);
+    setShowTotalOrders(false);
+    setShowTotalEarnings(false);
+    setShowAveragePrice(false);
+    setShowMostSelled(false);
     setShowAccountManagement(false);
     setShowProductManagement(true);
   }
@@ -57,11 +105,15 @@ export const ControlPanel = () => {
     <>
       <div className={styles.controlPanelMain}>
         <div className={styles.controlPanelMenu}>
-          <button className={styles.controlPanelSubButton} onClick={handleShowCarts}>Sales Analytics</button>
-          <button className={styles.controlPanelSubButton} onClick={handleShowTest}>Most buyed</button>
-          <button className={styles.controlPanelSubButton} onClick={handleShowTest}>Test</button>
+          <h4 className={fonts.subTitleFont}>Analytics</h4>
+          <button className={styles.controlPanelSubButton} onClick={handleShowTotalProducts}>Total Products</button>
+          <button className={styles.controlPanelSubButton} onClick={handleShowTotalOrders}>Total Orders</button>
+          <button className={styles.controlPanelSubButton} onClick={handleShowTotalEarnings}>Total Earnings</button>
+          <button className={styles.controlPanelSubButton} onClick={handleShowAveragePrice}>Average Price</button>
+          <button className={styles.controlPanelSubButton} onClick={handleShowMostSelled}>Most Selled</button>
+          <h4 className={fonts.subTitleFont}>Management</h4>
           <button className={styles.controlPanelSubButton} onClick={handleShowAccountManagement}>Edit Accounts</button>
-          <button className={styles.controlPanelSubButton} onClick={handleShowProductsManagement}>Edit Products</button>
+          <button className={styles.controlPanelSubButton} onClick={handleShowProductManagement}>Edit Products</button>
           {/* <button className={styles.controlPanelSubButton} onClick={handleShowTest}></button> */}
         </div>
         <div className={styles.controlPanelContent}>
@@ -69,57 +121,45 @@ export const ControlPanel = () => {
             <Loader />
           </div>
           {loadingFinished && showControlPanelDefault && (
-            <>
-              <DefaultContent />
-            </>
+            <DefaultContent />
           )}
-          {showCarts && (
-            <>
-              <div className={styles.cartsContainer} style={{ display: loadingCarts ? "none" : "block" }}>
-                {allCarts.map((cart) => (
-                  <div key={cart.id}>
-                    <h3>Cart ID: {cart.id}</h3>
-                    <ul>
-                      {Object.keys(cart).map((key) => (
-                        <li key={key}>
-                          {key}: {JSON.stringify(cart[key])}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </>
+          {showTotalProducts && (
+            <div className={styles.cartsContainer} style={{ display: loadingCarts ? "none" : "block" }}>
+              <TotalProducts allProductsObject={allProducts} />
+              {/* Deleted code https://prnt.sc/wjJrxqWJV824 */}
+            </div>
           )}
-          {showTest && (
-            <>
-              <div className={styles.productsContainer} style={{ display: loadingProducts ? "none" : "block" }}>
-                {allProducts.map((product) => (
-                  <div key={product.id}>
-                    <h3>Product ID: {product.id}</h3>
-                    <ul>
-                      {Object.keys(product).map((key) => (
-                        <li key={key}>
-                          {key}: {JSON.stringify(product[key])}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </>
+          {showTotalOrders && (
+            <div className={styles.productsContainer} style={{ display: loadingProducts ? "none" : "block" }}>
+              <TotalOrders allCartsObject={allCarts} />
+            </div>
+          )}
+          {showTotalEarnings && (
+            <div className={styles.productsContainer} style={{ display: loadingProducts ? "none" : "block" }}>
+              <TotalEarnings allCartsObject={allCarts} />
+            </div>
+          )}
+          {showAveragePrice && (
+            <div className={styles.productsContainer} style={{ display: loadingProducts ? "none" : "block" }}>
+              <AveragePrice allProductsObject={allProducts} />
+            </div>
+          )}
+          {showMostSelled && (
+            <div className={styles.productsContainer} style={{ display: loadingProducts ? "none" : "block" }}>
+              <MostSelled allCartsObject={allCarts} allProductsObject={allProducts} />
+            </div>
           )}
           {showAccountManagement && (
-            <>
+            <div className={styles.cartsContainer} style={{ display: loadingCarts ? "none" : "block" }}>
               <h1>Account Management</h1>
               <h2>Under construction</h2>
-            </>
+            </div>
           )}
           {showProductManagement && (
-            <>
+            <div className={styles.cartsContainer} style={{ display: loadingCarts ? "none" : "block" }}>
               <h1>Products Management</h1>
               <h2>Under construction</h2>
-            </>
+            </div>
           )}
         </div>
       </div>

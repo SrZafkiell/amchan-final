@@ -18,8 +18,8 @@ function DefaultContent() {
                 </section>
                 <section id="updates">
                     <h2 className={fonts.subTitleFont}>Updates?</h2>
-                    <p className={fonts.textFont}><a className={fonts.linkFont} href="https://github.com/SrZafkiell">SrZafkiell</a> will be offering updates for this project till he considers it is finished.</p>
-                    <p className={fonts.textFont}>The implemented updates and upcoming ones can be found in this: <a className={fonts.linkFont} href="https://trello.com/es">Updates list</a></p> 
+                    <p className={fonts.textFont}><a className={fonts.linkFont} href="https://github.com/SrZafkiell" target="_blank">SrZafkiell</a> will be offering updates for this project till he considers it is finished.</p>
+                    <p className={fonts.textFont}>The implemented updates and upcoming ones can be found in this: <a className={fonts.linkFont} href="https://trello.com/es" target="_blank">Updates list</a></p> 
                 </section>
                 {/* <section>
                     <h2 className={fonts.subTitleFont}></h2>
