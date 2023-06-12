@@ -3,7 +3,7 @@
 .controlPanelMain {
     min-height: 100vh;
     display: grid;
-    grid-template-columns: 0.2fr 1fr;
+    grid-template-columns: 0.3fr 2fr;
     margin: 30px;
 }
 
@@ -14,6 +14,23 @@
     justify-content: flex-start;
     align-content: center;
     align-items: center;
+    background-color: blueviolet;
+    padding: 0px 15px;
+}
+
+.controlPanelContentBox {
+    padding: 15px;
+    background-color: brown;
+    /* justify-content: center;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    flex-direction: column; */
+}
+
+.controlPanelContent {
+    background-color: aquamarine;
 }
 
 .controlPanelSubButton {
@@ -49,18 +66,6 @@
     transition: 0s;
 }
 
-.controlPanelContent {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    align-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 35px;
-    /* justify-content: center;
-    align-content: flex-start;
-    flex-wrap: wrap; */
-}
 
 .loaderWrapper {
     display: flex;

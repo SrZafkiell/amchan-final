@@ -10,6 +10,8 @@ import TotalOrders from "./Elements/Analytics/TotalOrders/TotalOrders";
 import TotalEarnings from "./Elements/Analytics/TotalEarnings/TotalEarnings";
 import AveragePrice from "./Elements/Analytics/AveragePrice/AveragePrice";
 import MostSelled from "./Elements/Analytics/MostSelled/MostSelled";
+import AccountManagement from './Elements/Management/Account/AccountManagement';
+import ProductManagement from "./Elements/Management/Product/ProductManagement";
 
 export const ControlPanel = () => {
   const { allCarts, loadingCarts, allProducts, loadingProducts } = useContext(StoreContext);
@@ -116,7 +118,7 @@ export const ControlPanel = () => {
           <button className={styles.controlPanelSubButton} onClick={handleShowProductManagement}>Edit Products</button>
           {/* <button className={styles.controlPanelSubButton} onClick={handleShowTest}></button> */}
         </div>
-        <div className={styles.controlPanelContent}>
+        <div className={styles.controlPanelContentBox}>
           <div className={styles.loaderWrapper} style={{ display: loadingCarts || loadingProducts ? "block" : "none" }}>
             <Loader />
           </div>
@@ -151,14 +153,12 @@ export const ControlPanel = () => {
           )}
           {showAccountManagement && (
             <div className={styles.cartsContainer} style={{ display: loadingCarts ? "none" : "block" }}>
-              <h1>Account Management</h1>
-              <h2>Under construction</h2>
+              <AccountManagement />
             </div>
           )}
           {showProductManagement && (
             <div className={styles.cartsContainer} style={{ display: loadingCarts ? "none" : "block" }}>
-              <h1>Products Management</h1>
-              <h2>Under construction</h2>
+              <ProductManagement />
             </div>
           )}
         </div>
