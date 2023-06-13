@@ -9,19 +9,19 @@ import TotalProducts from "./Elements/Analytics/TotalProducts/TotalProducts";
 import TotalOrders from "./Elements/Analytics/TotalOrders/TotalOrders";
 import TotalEarnings from "./Elements/Analytics/TotalEarnings/TotalEarnings";
 import AveragePrice from "./Elements/Analytics/AveragePrice/AveragePrice";
-import MostSelled from "./Elements/Analytics/MostSelled/MostSelled";
+import MostSold from "./Elements/Analytics/MostSold/MostSold";
 import AccountManagement from './Elements/Management/Account/AccountManagement';
 import ProductManagement from "./Elements/Management/Product/ProductManagement";
 
 export const ControlPanel = () => {
-  const { allCarts, loadingCarts, allProducts, loadingProducts } = useContext(StoreContext);
+  const { allCarts, loadingCarts, allProducts, loadingProducts, allUsers, loadingUsers, fetchedProducts, fetchedCarts, fetchedUsers } = useContext(StoreContext);
   const [loadingFinished, setLoadingFinished] = useState(false);
   const [showControlPanelDefault, setShowControlPanelDefault] = useState(true);
   const [showTotalProducts, setShowTotalProducts] = useState(false);
   const [showTotalOrders, setShowTotalOrders] = useState(false);
   const [showTotalEarnings, setShowTotalEarnings] = useState(false);
   const [showAveragePrice, setShowAveragePrice] = useState(false);
-  const [showMostSelled, setShowMostSelled] = useState(false);
+  const [showMostSold, setShowMostSold] = useState(false);
   const [showAccountManagement, setShowAccountManagement] = useState(false);
   const [showProductManagement, setShowProductManagement] = useState(false);
 
@@ -31,7 +31,7 @@ export const ControlPanel = () => {
     setShowTotalOrders(false);
     setShowTotalEarnings(false);
     setShowAveragePrice(false);
-    setShowMostSelled(false);
+    setShowMostSold(false);
     setShowAccountManagement(false);
     setShowProductManagement(false);
   }
@@ -41,7 +41,7 @@ export const ControlPanel = () => {
     setShowTotalOrders(true);
     setShowTotalEarnings(false);
     setShowAveragePrice(false);
-    setShowMostSelled(false);
+    setShowMostSold(false);
     setShowAccountManagement(false);
     setShowProductManagement(false);
   }
@@ -51,7 +51,7 @@ export const ControlPanel = () => {
     setShowTotalOrders(false);
     setShowTotalEarnings(true);
     setShowAveragePrice(false);
-    setShowMostSelled(false);
+    setShowMostSold(false);
     setShowAccountManagement(false);
     setShowProductManagement(false);
   }
@@ -61,17 +61,17 @@ export const ControlPanel = () => {
     setShowTotalOrders(false);
     setShowTotalEarnings(false);
     setShowAveragePrice(true);
-    setShowMostSelled(false);
+    setShowMostSold(false);
     setShowAccountManagement(false);
     setShowProductManagement(false);
   }
-  const handleShowMostSelled = () => {
+  const handleShowMostSold = () => {
     setShowControlPanelDefault(false);
     setShowTotalProducts(false);
     setShowTotalOrders(false);
     setShowTotalEarnings(false);
     setShowAveragePrice(false);
-    setShowMostSelled(true);
+    setShowMostSold(true);
     setShowAccountManagement(false);
     setShowProductManagement(false);
   }
@@ -81,7 +81,7 @@ export const ControlPanel = () => {
     setShowTotalOrders(false);
     setShowTotalEarnings(false);
     setShowAveragePrice(false);
-    setShowMostSelled(false);
+    setShowMostSold(false);
     setShowAccountManagement(true);
     setShowProductManagement(false);
   }
@@ -91,44 +91,58 @@ export const ControlPanel = () => {
     setShowTotalOrders(false);
     setShowTotalEarnings(false);
     setShowAveragePrice(false);
-    setShowMostSelled(false);
+    setShowMostSold(false);
     setShowAccountManagement(false);
     setShowProductManagement(true);
   }
 
+  // useEffect(() => {
+  //   if (!loadingCarts && !loadingProducts && !loadingUsers) {
+  //     // Loading is finished, show default content
+  //     setLoadingFinished(true);
+  //   }
+  // }, [loadingCarts, loadingProducts, loadingUsers]);
+
+  // Testing delay
   useEffect(() => {
-    if (!loadingCarts && !loadingProducts) {
-      // Loading is finished, show default content
-      setLoadingFinished(true);
+    if (!loadingCarts && !loadingProducts && !loadingUsers) {
+      // Simulate a longer loading time for testing purposes
+      setTimeout(() => {
+        setLoadingFinished(true);
+      }, 1000); // Delay in milliseconds
     }
-  }, [loadingCarts, loadingProducts]);
+  }, [loadingCarts, loadingProducts, loadingUsers]);
+  
 
   return (
     <>
       <div className={styles.controlPanelMain}>
         <div className={styles.controlPanelMenu}>
-          <h4 className={fonts.subTitleFont}>Analytics</h4>
+          <div className={styles.controlPanelMenuSectionTitle}>
+            <h4 className={fonts.linkFont}>Analytics</h4>
+          </div>
           <button className={styles.controlPanelSubButton} onClick={handleShowTotalProducts}>Total Products</button>
           <button className={styles.controlPanelSubButton} onClick={handleShowTotalOrders}>Total Orders</button>
           <button className={styles.controlPanelSubButton} onClick={handleShowTotalEarnings}>Total Earnings</button>
           <button className={styles.controlPanelSubButton} onClick={handleShowAveragePrice}>Average Price</button>
-          <button className={styles.controlPanelSubButton} onClick={handleShowMostSelled}>Most Selled</button>
-          <h4 className={fonts.subTitleFont}>Management</h4>
+          <button className={styles.controlPanelSubButton} onClick={handleShowMostSold}>Most Sold</button>
+          <div className={styles.controlPanelMenuSectionTitle}>
+            <h4 className={fonts.linkFont}>Management</h4>
+          </div>
           <button className={styles.controlPanelSubButton} onClick={handleShowAccountManagement}>Edit Accounts</button>
           <button className={styles.controlPanelSubButton} onClick={handleShowProductManagement}>Edit Products</button>
           {/* <button className={styles.controlPanelSubButton} onClick={handleShowTest}></button> */}
         </div>
         <div className={styles.controlPanelContentBox}>
-          <div className={styles.loaderWrapper} style={{ display: loadingCarts || loadingProducts ? "block" : "none" }}>
+          <div className={styles.loaderWrapper} style={{ display: !loadingFinished ? "block" : "none" }}>
             <Loader />
           </div>
           {loadingFinished && showControlPanelDefault && (
-            <DefaultContent />
+            <DefaultContent productsFetchStatus={fetchedProducts} cartsFetchStatus={fetchedCarts} usersFetchStatus={fetchedUsers}/>
           )}
           {showTotalProducts && (
             <div className={styles.cartsContainer} style={{ display: loadingCarts ? "none" : "block" }}>
               <TotalProducts allProductsObject={allProducts} />
-              {/* Deleted code https://prnt.sc/wjJrxqWJV824 */}
             </div>
           )}
           {showTotalOrders && (
@@ -138,17 +152,17 @@ export const ControlPanel = () => {
           )}
           {showTotalEarnings && (
             <div className={styles.productsContainer} style={{ display: loadingProducts ? "none" : "block" }}>
-              <TotalEarnings allCartsObject={allCarts} />
+              <TotalEarnings allCartsObject={allCarts} allProductsObject={allProducts} />
             </div>
           )}
           {showAveragePrice && (
             <div className={styles.productsContainer} style={{ display: loadingProducts ? "none" : "block" }}>
-              <AveragePrice allProductsObject={allProducts} />
+              <AveragePrice allProductsObject={allProducts}  />
             </div>
           )}
-          {showMostSelled && (
+          {showMostSold && (
             <div className={styles.productsContainer} style={{ display: loadingProducts ? "none" : "block" }}>
-              <MostSelled allCartsObject={allCarts} allProductsObject={allProducts} />
+              <MostSold allCartsObject={allCarts} allProductsObject={allProducts} />
             </div>
           )}
           {showAccountManagement && (

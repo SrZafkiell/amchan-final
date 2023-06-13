@@ -14,23 +14,40 @@
     justify-content: flex-start;
     align-content: center;
     align-items: center;
-    background-color: blueviolet;
     padding: 0px 15px;
 }
 
 .controlPanelContentBox {
     padding: 15px;
-    background-color: brown;
-    /* justify-content: center;
-    align-content: flex-start;
-    flex-wrap: wrap;
-    align-content: center;
-    align-items: center;
-    flex-direction: column; */
 }
 
-.controlPanelContent {
-    background-color: aquamarine;
+/* .controlPanelContent {
+} */
+
+.controlPanelContentTitle {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+/* .controlPanelContentCharts {
+} */
+
+.chart {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.controlPanelMenuSectionTitle {
+    background-color: #f1f1f1;
+    padding: 5px 10px;
+    margin: 10px auto;
+    border-radius: 10px;
+    width: 90%;
+    text-align: center;
 }
 
 .controlPanelSubButton {

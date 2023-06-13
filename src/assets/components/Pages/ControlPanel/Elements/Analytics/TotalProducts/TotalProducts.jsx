@@ -5,7 +5,16 @@ import controlPanelStyle from '/src/assets/components/Pages/ControlPanel/Control
 function TotalProducts(props){
     return (
         <div className={controlPanelStyle.controlPanelContent}>
-            <h1 className={fonts.titleFont}>Total products: {Object.keys(props.allProductsObject).length}</h1>
+            <div className={controlPanelStyle.controlPanelContentTitle}>
+                <h1 className={fonts.titleFont}>TOTAL PRODUCTS</h1>
+                <h2 className={fonts.titleFont}>{Object.keys(props.allProductsObject).length}</h2>
+                <p className={fonts.textFont}>Products got detected</p>
+            </div>
+            <div className={controlPanelStyle.controlPanelContentCharts}>
+                <div className={controlPanelStyle.chart}>
+                    {/* Add chart component */}
+                </div>
+            </div>
         </div>
     )
 };

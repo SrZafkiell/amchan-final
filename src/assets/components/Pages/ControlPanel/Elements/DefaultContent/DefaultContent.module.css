@@ -1,3 +1,18 @@
 .defaultContentBox {
     padding: 15px;
 }
+
+.fetchStatus{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.fetchStatusBox {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}

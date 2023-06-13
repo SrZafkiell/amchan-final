@@ -9,14 +9,18 @@ export const StoreProvider = ({ children }) => {
   const [allCarts, setAllCarts] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
   const [loadingProducts, setLoadingProducts] = useState(true);
+  const [fetchedProducts, setFetchedProducts] = useState(false);
   const [loadingCarts, setLoadingCarts] = useState(true);
+  const [fetchedCarts, setFetchedCarts] = useState(false);
   const [loadingUsers, setLoadingUsers] = useState(true);
+  const [fetchedUsers, setFetchedUsers] = useState(false);
 
   const getAllProducts = async () => {
     const response = await fetch(endpoint + "products");
     const data = await response.json();
     setAllProducts(data);
     setLoadingProducts(false);
+    setFetchedProducts(true);
   };
 
   const getAllCarts = async () => {
@@ -24,6 +28,7 @@ export const StoreProvider = ({ children }) => {
     const data = await response.json();
     setAllCarts(data);
     setLoadingCarts(false);
+    setFetchedCarts(true);
   };
 
   const getAllUsers = async () => {
@@ -31,11 +36,15 @@ export const StoreProvider = ({ children }) => {
     const data = await response.json();
     setAllUsers(data);
     setLoadingUsers(false);
+    setFetchedUsers(true);
   };
 
   useEffect(() => {
     Promise.all([getAllProducts(), getAllCarts(), getAllUsers()])
       .catch((error) => console.error("Error fetching data:", error));
+      setLoadingProducts(false);
+      setLoadingCarts(false);
+      setLoadingUsers(false);
   }, []);
 
   return (
@@ -46,7 +55,10 @@ export const StoreProvider = ({ children }) => {
         allUsers,
         loadingProducts,
         loadingCarts,
-        loadingUsers
+        loadingUsers,
+        fetchedProducts,
+        fetchedCarts,
+        fetchedUsers
       }}
     >
       {(loadingProducts || loadingCarts || loadingUsers) ? (
@@ -54,7 +66,7 @@ export const StoreProvider = ({ children }) => {
             {children}
         </>
       ) : (
-        children
+          children
       )}
     </StoreContext.Provider>
   );
