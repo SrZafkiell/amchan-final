@@ -3,22 +3,52 @@
 .controlPanelMain {
     min-height: 100vh;
     display: grid;
-    grid-template-columns: 0.3fr 2fr;
+    grid-template-columns: 1fr 7fr;
     margin: 30px;
+    gap: 30px;
 }
 
 .controlPanelMenu {
+    background-color: #3366ccb6;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #3C51BB;
+    border-width: 0px 3px 0px 3px; /* top, right, bottom, left */
+    min-width: 150px;
+    max-width: 200px;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-content: center;
-    align-items: center;
-    padding: 0px 15px;
+    align-content: flex-start;
+}
+
+.controlPanelMenu button {
+    width: 100%;
+}
+
+.controlPanelMenuSectionTitle {
+    padding: 5px 10px;
+    margin: 10px auto;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.controlPanelMenuSectionTitle h4 {
+    color: black;
+    transition: 1s;
+}
+
+.controlPanelMenuSectionTitle h4:hover {
+    color: rgb(4, 197, 223);
 }
 
 .controlPanelContentBox {
     padding: 15px;
+    background-color: #3366cc45;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #3C51BB;
+    border-width: 0px 3px 0px 3px; /* top, right, bottom, left */
 }
 
 /* .controlPanelContent {
@@ -39,15 +69,6 @@
 .chart {
     width: 70%;
     margin: 0 auto;
-}
-
-.controlPanelMenuSectionTitle {
-    background-color: #f1f1f1;
-    padding: 5px 10px;
-    margin: 10px auto;
-    border-radius: 10px;
-    width: 90%;
-    text-align: center;
 }
 
 .controlPanelSubButton {
@@ -90,8 +111,63 @@
     align-items: center;
 }
   
+@media (min-width: 200px) and (max-width: 750px) {
+    .controlPanelMain {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: 0.1fr 1fr;
+        margin: 30px;
+        gap: 30px;
+    }
+
+    .controlPanelContentCharts {
+        width: 100%;
+    } 
+
+    .controlPanelMenu {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 200px) and (max-width: 400px) {
+    .controlPanelMain {
+        margin: 0px;
+        gap: 0px;
+    }
+
+    .controlPanelContentBox {
+        border-radius: 0px;
+    }
+
+    .controlPanelMenu {
+        border-radius: 0px;
+        margin-top: 50px;
+        max-width: 100%;
+        display: flex;
+        background-color: #3366ccb6;
+        flex-wrap: wrap;
+        align-content: flex-start;
+    }
+    /* .controlPanelMenu {
+        background-color: #3366ccb6;
+        border-radius: 10px;
+        border-style: solid;
+        border-color: #3C51BB;
+        border-width: 0px 3px 0px 3px; top, right, bottom, left 
+        min-width: 150px;
+        max-width: 200px;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+    } */
+}
+
 
 /* 
 Blue: #3366cc
 White: #f1f1f1
 */
+
+/* @media (min-width: 200px) and (max-width: 1050px){
+
+} */

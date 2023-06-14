@@ -42,9 +42,9 @@ export const StoreProvider = ({ children }) => {
   useEffect(() => {
     Promise.all([getAllProducts(), getAllCarts(), getAllUsers()])
       .catch((error) => console.error("Error fetching data:", error));
-      setLoadingProducts(false);
-      setLoadingCarts(false);
-      setLoadingUsers(false);
+    setLoadingProducts(false);
+    setLoadingCarts(false);
+    setLoadingUsers(false);
   }, []);
 
   return (
@@ -61,13 +61,7 @@ export const StoreProvider = ({ children }) => {
         fetchedUsers
       }}
     >
-      {(loadingProducts || loadingCarts || loadingUsers) ? (
-        <>
-            {children}
-        </>
-      ) : (
-          children
-      )}
+      {children}
     </StoreContext.Provider>
   );
 };
