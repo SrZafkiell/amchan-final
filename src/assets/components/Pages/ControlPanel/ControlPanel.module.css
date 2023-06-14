@@ -71,6 +71,16 @@
     margin: 0 auto;
 }
 
+.mainChart {
+    display: block;
+}
+
+.mobileChart {
+    display: none;
+    width: 95%;
+    margin: 0px auto;
+}
+
 .controlPanelSubButton {
     width: 150px;
     height: 45px;
@@ -120,12 +130,17 @@
         gap: 30px;
     }
 
-    .controlPanelContentCharts {
-        width: 100%;
-    } 
+    /* .controlPanelContentCharts {
+        
+    }  */
 
     .controlPanelMenu {
         max-width: 100%;
+    }
+
+    .chart {
+        width: 100%;
+        margin: 0 auto;
     }
 }
 
@@ -148,19 +163,17 @@
         flex-wrap: wrap;
         align-content: flex-start;
     }
-    /* .controlPanelMenu {
-        background-color: #3366ccb6;
-        border-radius: 10px;
-        border-style: solid;
-        border-color: #3C51BB;
-        border-width: 0px 3px 0px 3px; top, right, bottom, left 
-        min-width: 150px;
-        max-width: 200px;
-        display: flex;
-        flex-wrap: wrap;
-        align-content: flex-start;
-    } */
+
+    .mainChart {
+        display: none;
+    }
+
+    .mobileChart {
+        display: block;
+    }
 }
+
+
 
 
 /* 

@@ -1,6 +1,8 @@
 import BarsChart from './Charts/BarsChart';
 import fonts from '/src/assets/fonts/GlobalFonts.module.css';
 import controlPanelStyle from '/src/assets/components/Pages/ControlPanel/ControlPanel.module.css';
+import styles from './MostSold.module.css'
+import PieChart from './Charts/PieChart';
 
 function MostSold(props) {
 
@@ -50,7 +52,12 @@ function MostSold(props) {
             <div className={controlPanelStyle.controlPanelContentCharts}>
                 {((props.allCartsObject).length && (props.allProductsObject).length) ? (
                     <div className={controlPanelStyle.chart}>
-                        <BarsChart carts={props.allCartsObject} products={props.allProductsObject} />
+                        <div className={controlPanelStyle.mainChart}>
+                            <BarsChart carts={props.allCartsObject} products={props.allProductsObject} />
+                        </div>
+                        <div className={controlPanelStyle.mobileChart}>
+                            <PieChart carts={props.allCartsObject} products={props.allProductsObject} />
+                        </div>
                     </div>
                 ) : null}
             </div>
